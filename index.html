@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="mn"> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="ForDadsWork.css">
+  <link rel="icon" href="./download.jpg">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Тооны нийлбэр</h1>
+    <input type="number" id="too1" placeholder="Эхний тоо">
+    <input type="number" id="too2" placeholder="Хоёр дахь тоо">
+    <button id="btn1"onclick="niilber()">Нийлбэр олох</button>
+    <button onclick="hasah()">Ялгавар</button>
+    <button onclick="vrjwer()">Үржвэр олох</button>
+    <button onclick="huwaah()">Ногдвор олох</button>
+    <p id="result">Тоо оруулна уу...</p>
+    <input type="number" id="too3" placeholder="Тал">
+    <button onclick="square()">Квадрат олох</button>
+    <button onclick="root()">Язгуур</button>
+    <p id="result2">Тоо оруулна уу...</p>
+    <input type="number" id="too4" placeholder="Өндөр">
+    <input type="number" id="too5" placeholder="Өргөн">
+    <input type="number" id="too6" placeholder="Урт">
+    <button onclick="cube()">Эзэлхүүн олох</button>
+    <p id="result3">Тоо оруулна уу...</p>
+    <script src="ForDadsWork.js"></script>
+    <button onclick="generateQR()">Generate QR</button>
+    <button onclick="clearQR()">Clear QR</button>
+    <div id="qrcode"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        const fixedURL = "https://bayanbaatarbayanchuluu-dotcom.github.io/Your-Calculator/";
+        function generateQR() {
+            const container = document.getElementById("qrcode");
+            container.innerHTML = "";
+            const uniqueURL = fixedURL + "4?id=" + Date.now();
+            const qrDiv = document.createElement("div");
+            qrDiv.classList.add("qrbox");
+            container.appendChild(qrDiv);
+            new QRCode(qrDiv, {
+                text: uniqueURL,
+                width: 200,
+                height: 200,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+        function clearQR() {
+            document.getElementById("qrcode").innerHTML = "";
+        }
+    </script>
+  </div>
+</body>
+</html>
